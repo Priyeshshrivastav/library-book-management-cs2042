@@ -44,5 +44,23 @@ class TestLibrarySprint2(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.lib.return_book(999)
 
+class TestLibrarySprint3(unittest.TestCase):
+    def setUp(self):
+        self.lib = Library()
+        self.lib.add_book(1, "1984", "George Orwell")
+
+    def test_report_header(self):
+        report = self.lib.generate_report()
+        self.assertIn("Book ID | Title | Author | Status", report)
+
+    def test_report_content(self):
+        report = self.lib.generate_report()
+        self.assertIn("1 | 1984 | George Orwell | available", report)
+        
+    def test_report_borrowed_status(self):
+        self.lib.borrow_book(1)
+        report = self.lib.generate_report()
+        self.assertIn("1 | 1984 | George Orwell | borrowed", report)
+
 if __name__ == '__main__':
     unittest.main()

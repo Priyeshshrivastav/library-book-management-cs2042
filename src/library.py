@@ -29,3 +29,10 @@ class Library:
              raise ValueError(f"Book with ID {book_id} is not borrowed.")
 
         self.books[book_id]['status'] = 'available'
+
+    def generate_report(self):
+        report = "Book ID | Title | Author | Status\n"
+        report += "-" * 40 + "\n"
+        for book_id, book in self.books.items():
+            report += f"{book_id} | {book['title']} | {book['author']} | {book['status']}\n"
+        return report

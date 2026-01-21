@@ -19,4 +19,8 @@
      - Error if book not found.
 
 ## Sprint 3
-(To be implemented)
+4. **Generate Report**: As a librarian, I want to generate a report of all books and their statuses so I can manage inventory.
+   - *Acceptance Criteria*:
+     - Report contains all books.
+     - Report includes ID, Title, Author, Status.
+     - Report has a header row.
