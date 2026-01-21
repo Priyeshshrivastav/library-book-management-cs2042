@@ -7,7 +7,16 @@
      - Error raised if duplicate Book ID is entered.
 
 ## Sprint 2
-(To be implemented)
+2. **Borrow Book**: As a member, I want to borrow a book by ID so that I can read it.
+   - *Acceptance Criteria*:
+     - Status changes to 'borrowed'.
+     - Error if book not found.
+     - Error if book already borrowed.
+
+3. **Return Book**: As a member, I want to return a borrowed book so that others can read it.
+   - *Acceptance Criteria*:
+     - Status changes to 'available'.
+     - Error if book not found.
 
 ## Sprint 3
 (To be implemented)

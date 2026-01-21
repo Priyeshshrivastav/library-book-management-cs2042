@@ -17,5 +17,32 @@ class TestLibrarySprint1(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.lib.add_book(1, "Book 2", "Author 2")
 
+class TestLibrarySprint2(unittest.TestCase):
+    def setUp(self):
+        self.lib = Library()
+        self.lib.add_book(1, "The Hobbit", "J.R.R. Tolkien")
+
+    def test_borrow_book_success(self):
+        self.lib.borrow_book(1)
+        self.assertEqual(self.lib.books[1]['status'], 'borrowed')
+
+    def test_borrow_book_already_borrowed(self):
+        self.lib.borrow_book(1)
+        with self.assertRaises(ValueError):
+            self.lib.borrow_book(1)
+
+    def test_borrow_book_not_found(self):
+        with self.assertRaises(ValueError):
+            self.lib.borrow_book(999)
+
+    def test_return_book_success(self):
+        self.lib.borrow_book(1)
+        self.lib.return_book(1)
+        self.assertEqual(self.lib.books[1]['status'], 'available')
+
+    def test_return_book_not_found(self):
+        with self.assertRaises(ValueError):
+            self.lib.return_book(999)
+
 if __name__ == '__main__':
     unittest.main()
